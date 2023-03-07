@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, Navigate, Outlet, useNavigate } from 'react-router-dom';
 import { StyledRegisterPage } from './style';
 import RegisterForm from '../../components/Form/RegisterForm';
 import IllustrationBox from '../../components/IllustrationBox';
@@ -7,6 +7,9 @@ import { StyledTitle } from '../../styles/typography';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
 const RegisterPage = () => {
+  const navigate = useNavigate();
+  const token = localStorage.getItem('@TOKEN');
+
   return (
     <StyledRegisterPage>
       <StyledContainer>

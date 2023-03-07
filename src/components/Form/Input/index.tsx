@@ -1,28 +1,28 @@
-import React from 'react';
+import { UseFormRegister } from 'react-hook-form';
 import { StyledTextField } from '../../../styles/form';
 import { StyledParagraph } from '../../../styles/typography';
-import { UseFormRegister } from 'react-hook-form';
+import { StyledFieldset } from './style';
 
 interface iInput {
+  name: string;
   label: string;
-  type: string;
+  type: 'text' | 'email' | 'password';
   placeholder: string;
   defaultValue?: string;
   register: UseFormRegister<any>;
-  name: string;
   errors: any;
 }
 
 const Input = ({
+  name,
   label,
   type,
   placeholder,
   defaultValue,
-  register,
-  name,
   errors,
+  register,
 }: iInput) => (
-  <fieldset>
+  <StyledFieldset>
     <StyledTextField
       label={label}
       type={type}
@@ -31,7 +31,7 @@ const Input = ({
       {...register(name)}
     />
     {errors && <StyledParagraph fontColor='red'>{errors}</StyledParagraph>}
-  </fieldset>
+  </StyledFieldset>
 );
 
 export default Input;
